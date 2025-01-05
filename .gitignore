@@ -1,1 +1,35 @@
+#SO
+*.DS_Store
+Thumbs.db
+
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.env
+*.venv
+ENV/
+env/
 venv/
+.Python
+
+# Configuration files
+*.sqlite3
+*.db
+db.sqlite3-journal
+*.migrations/
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+*.pid
+celerybeat-schedule
+
+# Whoosh
+index/
+
