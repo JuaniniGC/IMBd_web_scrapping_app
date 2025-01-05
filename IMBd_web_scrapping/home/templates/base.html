@@ -16,8 +16,8 @@
                 <li><a href="/load">Cargar Datos</a></li>
                 <!-- Menú desplegable -->
                 <li>
-                    <form id="menu-form" style="display: inline;">
-                        <label for="nav-select" style="color: #f5c518;">Ordenar por: </label>
+                    <form id="menu-form" style="display: inline; padding:0;">
+                        <label for="nav-select" style="color: #f5c518;">Listar todo ordenado por: </label>
                         <select id="nav-select" name="nav" onchange="navigateToPage()">
                             <option value="">Seleccione una opción</option>
                             <option value="/order_by_rate">Puntuación</option>
@@ -29,6 +29,7 @@
                         </select>
                     </form>
                 </li>
+                <li><a href="{% url 'search_page' %}">Buscar</a></li>
             </ul>
         </nav>
     </header>

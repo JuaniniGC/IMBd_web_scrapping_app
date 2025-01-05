@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Buscar en el Índice</h2>
+
+<form action="{% url 'search_results' %}" method="get">
+    <label for="search-query">Nombre:</label>
+    <input type="text" id="search-query" name="query" placeholder="Ingresa un término de búsqueda" required>
+
+    <label for="search-field">Categoría:</label>
+    <select id="search-field" name="field" required>
+        <option value="title">Título</option>
+        <option value="year">Año</option>
+        <option value="recommended_age">Edad Recomendada</option>
+    </select>
+
+    <button type="submit">Buscar</button>
+</form>
+{% endblock %}

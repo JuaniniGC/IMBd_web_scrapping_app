@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Resultados de la Búsqueda</h2>
+
+<p>Búsqueda realizada: "{{ query }}" en "{{ field }}"</p>
+
+{% if results %}
+    <ul>
+        {% for result in results %}
+        <li>
+            <strong>{{ result.title }}</strong><br>
+            Año: {{ result.year }}<br>
+            Calificación: {{ result.rate }}<br>
+            Edad Recomendada: {{ result.recommended_age }}
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No se encontraron resultados para tu búsqueda.</p>
+{% endif %}
+{% endblock %}

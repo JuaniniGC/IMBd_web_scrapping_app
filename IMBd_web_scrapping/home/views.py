@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from .scraper_util import fetch_data
-from .whoosh_util import get_index, list_filtered_elements, list_all_elements_sorted, list_all_elements
+from .whoosh_util import get_index, list_filtered_elements, list_all_elements_sorted, list_all_elements, search_in_index
+from django.shortcuts import render
+from whoosh.index import open_dir
+
 
 def home(request):
     return render(request, 'home.html')
@@ -39,3 +42,29 @@ def order_by_title(request):
     data = list_all_elements_sorted(index, 'title')
     return render(request, 'load.html', {'movies': data, 'sorted': 'título'})
 
+def search_results(request):
+    """
+    Vista para procesar la búsqueda en el índice de Whoosh.
+    """
+    query = request.GET.get('query', '')  # Nombre ingresado
+    field = request.GET.get('field', '')  # Categoría seleccionada
+    results = []
+
+    if query and field:
+        try:
+            # Abre el índice
+            index_dir = "index"
+            index = open_dir(index_dir)
+
+            # Realiza la búsqueda
+            results = search_in_index(index, field, query)
+        except Exception as e:
+            print(f"Error durante la búsqueda: {e}")
+
+    return render(request, 'search_results.html', {'results': results, 'query': query, 'field': field})
+
+def search_page(request):
+    """
+    Vista para mostrar el formulario de búsqueda.
+    """
+    return render(request, 'search.html')

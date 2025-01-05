@@ -81,3 +81,19 @@ def list_all_elements(index):
             results_list.append(dict(result))
     
     return results_list
+
+def search_in_index(index, field_name, search_query, limit=None):
+    results_list = []
+
+    with index.searcher() as searcher:
+        if field_name not in index.schema.names():
+            raise ValueError(f"El campo '{field_name}' no existe en el esquema del índice.")
+
+        parser = QueryParser(field_name, index.schema)
+        query = parser.parse(search_query)
+        results = searcher.search(query, limit=limit)
+
+        for result in results:
+            results_list.append(dict(result))
+    
+    return results_list

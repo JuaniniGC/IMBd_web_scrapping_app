@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from home.views import home, load_data, order_by_rate, order_by_votes, order_by_duration, order_by_year, order_by_recommended_age, order_by_title
+from home.views import home, load_data, order_by_rate, order_by_votes, order_by_duration, order_by_year, order_by_recommended_age, order_by_title, search_results, search_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,5 +27,7 @@ urlpatterns = [
     path("order_by_duration", order_by_duration, name="order_by_duration"),
     path("order_by_year", order_by_year, name="order_by_year"),
     path("order_by_recommended_age", order_by_recommended_age, name="order_by_recommended_age"),
-    path("order_by_title", order_by_title, name="order_by_title")
+    path("order_by_title", order_by_title, name="order_by_title"),
+    path('search/', search_page, name='search_page'),  # Página del formulario
+    path('search/results/', search_results, name='search_results'),
 ]

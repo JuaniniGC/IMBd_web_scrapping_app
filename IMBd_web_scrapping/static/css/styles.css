@@ -117,3 +117,50 @@ nav ul li select {
 nav ul li select:hover {
     cursor: pointer;
 }
+
+
+/* Formulario de búsqueda */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    background: #333; /* Fondo oscuro */
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(255, 255, 255, 0.2);
+}
+
+/* Etiquetas */
+form label {
+    font-weight: bold;
+    color: #f5c518; /* Amarillo IMDb */
+}
+
+/* Campos de entrada */
+form input,
+form select {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #555; /* Borde gris oscuro */
+    border-radius: 5px;
+    background-color: #1c1c1c; /* Fondo oscuro */
+    color: #fff; /* Texto en blanco */
+}
+
+/* Botón de envío */
+form button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #f5c518; /* Amarillo IMDb */
+    color: #000; /* Texto negro */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #e1b809; /* Amarillo más oscuro */
+}
+
+

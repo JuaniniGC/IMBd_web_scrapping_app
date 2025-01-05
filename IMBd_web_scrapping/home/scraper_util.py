@@ -53,9 +53,10 @@ def fetch_data():
     for movie in movies_list:
         title = remove_leading_number(movie.find('h3', class_='ipc-title__text').text)
         info_text = movie.find('div', class_='sc-300a8231-6 dBUjvq cli-title-metadata').text
-        year_text, duration_text, recommended_age = separate_info_text(info_text)
+        year_text, duration_text, recommended_age_text = separate_info_text(info_text)
         year = int(year_text)
         duration = parse_hours(duration_text)
+        recommended_age = parse_recommendation_age(recommended_age_text)
         rate = float(movie.find('span', class_='ipc-rating-star--rating').text)
         number_of_votes = parse_number_of_votes(movie.find('span', class_='ipc-rating-star--voteCount').text)
         data.append({
@@ -76,8 +77,6 @@ def fetch_data():
         )
     writer.commit()
     return data
-    
-    
 
 def parse_hours(duration_str):
     match = re.search(r'(?:(\d+)h)?\s*(?:(\d+)m)?', duration_str.strip())
@@ -124,3 +123,9 @@ def separate_info_text(text):
 def remove_leading_number(text):
     result = re.sub(r'^\d+\.\s*', '', text)
     return result
+
+def parse_recommendation_age(text):
+    if text == 'A':
+        return "Todos los públicos"    
+    else:
+        return text
