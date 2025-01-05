@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mi Proyecto{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>IMBd Web Scrapping</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/load">Cargar Datos</a></li>
+                <!-- Menú desplegable -->
+                <li>
+                    <form id="menu-form" style="display: inline;">
+                        <label for="nav-select" style="color: #f5c518;">Ordenar por: </label>
+                        <select id="nav-select" name="nav" onchange="navigateToPage()">
+                            <option value="">Seleccione una opción</option>
+                            <option value="/order_by_rate">Puntuación</option>
+                            <option value="/order_by_votes">Número de votos</option>
+                            <option value="/order_by_duration">Duración</option>
+                            <option value="/order_by_recommended_age">Edad recomendada</option>
+                            <option value="/order_by_year">Año de estreno</option>
+                            <option value="/order_by_title">Título</option>
+                        </select>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        <!-- Contenido de la página -->
+        {% endblock %}
+    </main>
+    <script>
+        function navigateToPage() {
+            const select = document.getElementById("nav-select");
+            const selectedValue = select.value;
+            if (selectedValue) {
+                window.location.href = selectedValue; // Redirige a la página seleccionada
+            }
+        }
+    </script>
+</body>
+</html>

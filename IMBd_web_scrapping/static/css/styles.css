@@ -1,0 +1,119 @@
+/* Estilos básicos para el cuerpo */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000; /* Fondo negro */
+    color: #fff; /* Texto en blanco */
+    line-height: 1.6;
+}
+
+/* Estilo del encabezado */
+header {
+    background: #1c1c1c; /* Fondo oscuro para el encabezado */
+    color: #f5c518; /* Color amarillo similar a IMDb */
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Estilo de la barra de navegación */
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 0 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #f5c518; /* Enlaces en amarillo */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo del contenido principal */
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #1c1c1c; /* Fondo oscuro */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1); /* Sutil sombra blanca */
+}
+
+/* Estilo de los encabezados secundarios */
+h2 {
+    color: #f5c518; /* Color amarillo para títulos secundarios */
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+}
+
+/* Estilo de las listas (por ejemplo, de películas) */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 15px;
+    padding: 10px;
+    background: #333; /* Fondo oscuro para elementos de lista */
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(255, 255, 255, 0.1); /* Sombra sutil */
+}
+
+ul li strong {
+    color: #f5c518; /* Títulos destacados en amarillo */
+}
+
+/* Estilo del pie de página */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #1c1c1c; /* Fondo oscuro */
+    color: #aaa; /* Texto gris claro */
+    margin-top: 20px;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer p a {
+    color: #f5c518; /* Enlaces en amarillo */
+    text-decoration: none;
+}
+
+footer p a:hover {
+    text-decoration: underline;
+}
+
+nav ul li select {
+    background-color: #1c1c1c; /* Fondo oscuro */
+    color: #f5c518; /* Texto amarillo */
+    border: 1px solid #f5c518;
+    padding: 5px;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+
+nav ul li select:hover {
+    cursor: pointer;
+}
