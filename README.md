@@ -4,10 +4,10 @@
 El objetivo de este proyecto es extraer información detallada y estructurada desde la página web de IMDb, la base de datos más popular de películas, programas de televisión, actores y mucho más. Este proyecto tiene como propósito analizar, visualizar y proporcionar datos útiles sobre la industria del cine y la televisión.
 
 ## 🛠️ Funcionalidades
-- **Extracción de Datos:** Información sobre películas como títulos, directores, actores principales, géneros, duración, calificación, y reseñas.
-- **Análisis de Datos:** Cálculo de métricas como la duración promedio de las películas, tendencias de popularidad, géneros más frecuentes, entre otros.
-- **Visualización:** Generación de gráficos y tablas para mostrar los datos extraídos y facilitar su interpretación.
-- **Filtrado:** Opciones para seleccionar películas por año, género, clasificación de edad, y otros criterios.
+- **Cargar Datos:** Extraer los datos de IMBd con BeautifulSoup4 y almacenarlos en un indice creado con Whoosh 
+- **Listar Datos:** Listar todos los datos almacenados en el indice ordenados por distintos parametros seleccionables.
+- **Buscar:** Funcion para buscar documentos especificos en el indice por título, año de lanzamiento o edad recomendada de visualización.  
+- **Visualización:** Generación de gráficos para mostrar los datos extraídos y analizarlos con facilidad. 
 
 ## 📂 Estructura del Proyecto
 - **Carpeta IMBd_web_Scrapping:** carpeta principal del proyecto 
