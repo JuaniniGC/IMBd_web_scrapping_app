@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Duración por Edad Recomendada{% endblock %}
+
+{% block content %}
+<h2 style="text-align: center;">Duración Promedio de Películas por Edad Recomendada</h2>
+<p style="text-align: center;">Descubre cómo varía la duración promedio de las películas según su clasificación por edad. Este gráfico te permitirá analizar tendencias y diferencias entre las categorías de edad recomendada.</p>
+
+<div style="width: 75%; margin: auto;">
+    <canvas id="moviesChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Obtén los datos enviados desde Django
+    const labels = {{ labels|safe }};
+    const durations = {{ durations|safe }};
+
+    // Configuración del gráfico
+    const ctx = document.getElementById('moviesChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar', // Tipo de gráfico: 'bar', 'line', 'pie', etc.
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Duración Promedio (minutos)',
+                data: durations,
+                backgroundColor: 'rgba(245, 197, 24, 0.8)',
+                borderColor: 'rgba(245, 197, 24, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Duración (minutos)'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Edad Recomendada'
+                    }
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

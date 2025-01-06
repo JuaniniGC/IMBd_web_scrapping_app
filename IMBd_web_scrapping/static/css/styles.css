@@ -163,4 +163,14 @@ form button:hover {
     background-color: #e1b809; /* Amarillo más oscuro */
 }
 
-
+.chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto; /* Centrado vertical y horizontal */
+    max-width: 80%; /* Limita el ancho máximo */
+    border: 1px solid #f5c518; /* Opcional: agrega un borde */
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #222; /* Fondo para destacar el gráfico */
+}

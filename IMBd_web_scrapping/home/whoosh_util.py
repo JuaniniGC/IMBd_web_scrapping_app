@@ -5,6 +5,7 @@ import os
 import random
 import requests
 from bs4 import BeautifulSoup
+from collections import Counter, defaultdict
 
 def get_schema():
     return Schema(
@@ -97,3 +98,34 @@ def search_in_index(index, field_name, search_query, limit=None):
             results_list.append(dict(result))
     
     return results_list
+
+def get_movies_count_by_year(ix):
+    with ix.searcher() as searcher:
+        results = searcher.documents()
+        years = [int(result['year']) for result in results if 'year' in result]
+
+        if not years:  
+            return {}
+
+        year_count = Counter(years) 
+
+        all_years = range(min(years), max(years) + 1)
+        complete_year_count = {year: year_count.get(year, 0) for year in all_years}
+
+    return dict(sorted(complete_year_count.items()))
+
+def get_avg_duration_by_age(ix):
+    age_groups = defaultdict(list)  
+
+    with ix.searcher() as searcher:
+        results = searcher.documents()
+        for result in results:
+            age = result.get('recommended_age', 'Desconocido')  # Edad recomendada o 'Desconocido'
+            duration = result.get('duration', 0)
+            age_groups[age].append(duration)
+
+    avg_durations = {
+        age: sum(durations) / len(durations) if durations else 0
+        for age, durations in age_groups.items()
+    }
+    return avg_durations

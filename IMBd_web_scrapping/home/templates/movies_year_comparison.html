@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Películas por Año{% endblock %}
+
+{% block content %}
+<h2>Películas Lanzadas por Año</h2>
+<p>Explora cómo ha evolucionado la industria cinematográfica a lo largo de los años con este gráfico interactivo. Visualiza la cantidad de películas lanzadas en cada año y obtén una perspectiva única sobre las tendencias del cine.</p>
+
+
+<div style="width: 90%; margin: auto;">
+    <canvas id="moviesChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Obtén los datos enviados desde Django
+    const labels = {{ labels|safe }};
+    const movies_count = {{ movies_count|safe }};
+
+    // Configuración del gráfico
+    const ctx = document.getElementById('moviesChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line', // Tipo de gráfico: 'bar', 'line', 'pie', etc.
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Peliculas Lanzadas',
+                data: movies_count,
+                backgroundColor: 'rgba(245, 197, 24, 0.8)', 
+                borderColor: 'rgba(245, 197, 24, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Peliculas Lanzadas'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Año de Lanzamiento'
+                    }
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}
